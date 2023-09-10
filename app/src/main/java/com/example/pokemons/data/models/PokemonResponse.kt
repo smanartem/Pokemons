@@ -1,6 +1,6 @@
 package com.example.pokemons.data.models
 
-data class Response(
+data class PokemonResponse(
     val count: Int,
     val next: String,
     val previous: Any,
