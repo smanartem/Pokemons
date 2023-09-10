@@ -7,9 +7,5 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-data class Result(
-    val name: String,
-    val url: String
-)
     }
 }
