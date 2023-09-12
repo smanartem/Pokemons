@@ -22,5 +22,17 @@ class FragmentDetails: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        refreshUI()
+    }
+
+    private fun refreshUI(){
+        with(binding){
+            //TODO: set up data into views
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

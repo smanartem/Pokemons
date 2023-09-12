@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.pokemons"
-        minSdk = 27
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -52,12 +52,12 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-    implementation("androidx.activity:activity-ktx:1.6.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.activity:activity-ktx:1.7.2")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.recyclerview:recyclerview:1.3.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -73,8 +73,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.6.0")
 
     //navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.2")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.2")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.4.2")
+    implementation("androidx.navigation:navigation-ui-ktx:2.4.2")
 
     //Dagger2
     implementation("com.google.dagger:dagger:2.42")

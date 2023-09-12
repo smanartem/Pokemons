@@ -9,13 +9,14 @@ import com.example.pokemons.domain.Repository
 
 class FragmentMainVM(private val repository: Repository): ViewModel(){
 
-    lateinit var data: PokemonResponse
+    var data: PokemonResponse
 
     private val mutablePokemonsList = MutableLiveData<List<Pokemon>>()
     val livePokemonsList: LiveData<List<Pokemon>> = mutablePokemonsList
 
-    private fun setData() {
-       data = repository.getPokemonsData()
+    init {
+        data = repository.getPokemonsData()
+        refreshList()
     }
 
     fun refreshList(){
