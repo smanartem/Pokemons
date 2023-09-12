@@ -3,7 +3,6 @@ package com.example.pokemons.di
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokemons.domain.Repository
-import com.example.pokemons.ui.ViewModelFactory
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

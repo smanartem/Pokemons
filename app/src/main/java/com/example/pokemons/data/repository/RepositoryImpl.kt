@@ -12,7 +12,7 @@ class RepositoryImpl(
         super.getPokemon()
     }
 
-    override fun getPokemonsList() {
-        super.getPokemonsList()
+    override fun getPokemonsData() {
+        super.getPokemonsData()
     }
 }

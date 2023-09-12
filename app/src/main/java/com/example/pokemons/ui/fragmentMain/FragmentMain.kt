@@ -1,4 +1,4 @@
-package com.example.pokemons.ui.FragmentMain
+package com.example.pokemons.ui.fragmentMain
 
 import android.os.Bundle
 import android.view.LayoutInflater

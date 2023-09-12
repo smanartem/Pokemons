@@ -4,5 +4,5 @@ data class PokemonResponse(
     val count: Int,
     val next: String,
     val previous: Any,
-    val pokemons: List<Result>
+    val pokemons: List<Pokemon>
 )
