@@ -1,13 +1,17 @@
 package com.example.pokemons.data.db
 
-import com.example.pokemons.data.db.LocalDb
+import com.example.pokemons.data.models.Pokemon
 
-class LocalDbImpl(): LocalDb {
-    override fun saveToBd() {
-        super.saveToBd()
+class LocalDbImpl(private val dao: PokemonDao): LocalDb {
+    override fun saveToDb(list: List<Pokemon>) {
+        dao.addListToDB(list)
     }
 
-    override fun getFromBd() {
-        super.getFromBd()
+    override fun getFromDb() : List<Pokemon>{
+        return dao.getPokemonsList()
+    }
+
+    override fun clearDb() {
+        dao.clearDB()
     }
 }

@@ -8,7 +8,7 @@ import retrofit2.http.Path
 
 interface retrofit {
     @GET("https://pokeapi.co/api/v2/pokemon/?limit=20&offset={offset}")
-    fun getPokemonsList(@Path(value = "offset", encoded = true) offset: String) : Observable<PokemonResponse>
+    fun getPokemonResponse(@Path(value = "offset", encoded = true) offset: String) : Observable<PokemonResponse>
 
     @GET("https://pokeapi.co/api/v2/pokemon/{number}/")
     fun getPokemon(@Path(value = "number", encoded = true) number: String) : Observable<PokemonDetails>
