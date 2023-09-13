@@ -4,14 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pokemons.data.models.Pokemon
+import com.example.pokemons.data.models.PokemonDetails
 import com.example.pokemons.domain.repository.Repository
 
 class FragmentDetailsVM(private val repository: Repository): ViewModel() {
 
-    var pokemon: Pokemon
+    var pokemon: PokemonDetails
 
-    private val mutablePokemon = MutableLiveData<Pokemon>()
-    val livePokemon: LiveData<Pokemon> = mutablePokemon
+    private val mutablePokemon = MutableLiveData<PokemonDetails>()
+    val livePokemon: LiveData<PokemonDetails> = mutablePokemon
 
     init {
         pokemon = repository.getPokemon()

@@ -6,9 +6,9 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface retrofit {
-    @GET("https://pokeapi.co/api/v2/pokemon/?limit=20&offset={offset}")
-    fun getPokemonResponse(@Path(value = "offset", encoded = true) offset: String) : Observable<PokemonResponse>
+interface Retrofit {
+    @GET("https://pokeapi.co/api/v2/pokemon/?limit=1281&offset=0")
+    fun getPokemonResponse() : Observable<PokemonResponse>
 
     @GET("https://pokeapi.co/api/v2/pokemon/{number}/")
     fun getPokemon(@Path(value = "number", encoded = true) number: String) : Observable<PokemonDetails>

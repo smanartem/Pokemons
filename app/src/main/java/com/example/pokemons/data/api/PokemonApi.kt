@@ -5,7 +5,7 @@ import com.example.pokemons.data.models.PokemonResponse
 
 interface PokemonApi {
 
-    fun getData(page: Int): PokemonResponse
+    fun getData(): PokemonResponse
 
     fun getPokemon(number: Int): PokemonDetails
 

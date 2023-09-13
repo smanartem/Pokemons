@@ -1,34 +1,39 @@
 package com.example.pokemons.domain.repository
 
+import android.content.Context
 import com.example.pokemons.data.api.PokemonApiImpl
 import com.example.pokemons.data.db.LocalDbImpl
 import com.example.pokemons.data.models.Pokemon
+import com.example.pokemons.data.models.PokemonDetails
+import com.example.pokemons.utils.LIMIT_ON_PAGE
+import com.example.pokemons.utils.isInternetAvailable
 
 class RepositoryImpl(
     private val api: PokemonApiImpl,
-    private val db: LocalDbImpl
-): Repository {
+    private val db: LocalDbImpl,
+    private val context: Context
+) : Repository {
 
     private var pokemonList: List<Pokemon>
 
     init {
-        val apiData = api.getData()?: emptyList<Pokemon>()
-        if(apiData != null) db.saveToDb(apiData)
+        refreshDb()
+        pokemonList = db.getFromDb()
+    }
 
-        val dbData = db.getFromDb()
-        if(dbData.isNotEmpty()){
-            pokemonList = dbData
-        }else{
-            showEmptyFragment()
+    private fun refreshDb(){
+        if(isInternetAvailable(context)){
+            val apiData = api.getData()
+            db.saveToDb(apiData.pokemons)
         }
     }
 
-    override fun getPokemon() {
+    override fun getPokemon(number: Int): PokemonDetails {
         //TODO: add check for internet connection
-        return api.getPokemon()
+        return api.getPokemon(number)
     }
 
-    override fun getPokemonsData(): List<Pokemon> {
-        return pokemonList
+    override fun getPokemonsPage(page: Int): List<Pokemon> {
+        return pokemonList.subList(page, page + LIMIT_ON_PAGE)
     }
 }

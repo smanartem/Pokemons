@@ -8,14 +8,14 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class PokemonApiImpl(
-    private val retrofit: retrofit
+    private val retrofit: Retrofit
 ) : PokemonApi {
 
     lateinit var pokemonResponse: PokemonResponse
     lateinit var pokemon: PokemonDetails
-    override fun getData(page: Int): PokemonResponse {
+    override fun getData(): PokemonResponse {
 
-        val observable = retrofit.getPokemonResponse(page.toString())
+        val observable = retrofit.getPokemonResponse()
         val observer = getResponseObserver()
         observable
             .subscribeOn(Schedulers.io())
