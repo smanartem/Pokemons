@@ -80,4 +80,8 @@ dependencies {
     implementation("com.google.dagger:dagger:2.42")
     kapt("com.google.dagger:dagger-compiler:2.42")
 
+    //Room
+    implementation("androidx.room:room-runtime:2.5.2")
+    annotationProcessor("androidx.room:room-compiler:2.5.2")
+
 }
