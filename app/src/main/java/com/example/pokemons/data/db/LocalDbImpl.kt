@@ -1,6 +1,6 @@
-package com.example.pokemons.data.repository
+package com.example.pokemons.data.db
 
-import com.example.pokemons.domain.LocalDb
+import com.example.pokemons.data.db.LocalDb
 
 class LocalDbImpl(): LocalDb {
     override fun saveToBd() {

@@ -2,7 +2,7 @@ package com.example.pokemons.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.pokemons.domain.Repository
+import com.example.pokemons.domain.repository.Repository
 import com.example.pokemons.ui.fragmentDetails.FragmentDetails
 import com.example.pokemons.ui.fragmentDetails.FragmentDetailsVM
 import com.example.pokemons.ui.fragmentMain.FragmentMain

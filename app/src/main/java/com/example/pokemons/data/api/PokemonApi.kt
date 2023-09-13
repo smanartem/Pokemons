@@ -1,4 +1,4 @@
-package com.example.pokemons.domain
+package com.example.pokemons.data.api
 
 interface PokemonApi {
 

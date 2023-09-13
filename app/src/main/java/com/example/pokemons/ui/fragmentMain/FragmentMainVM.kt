@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pokemons.data.models.Pokemon
 import com.example.pokemons.data.models.PokemonResponse
-import com.example.pokemons.domain.Repository
+import com.example.pokemons.domain.repository.Repository
 
 class FragmentMainVM(private val repository: Repository): ViewModel(){
 

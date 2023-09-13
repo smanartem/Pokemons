@@ -1,8 +1,7 @@
-package com.example.pokemons.data.repository
+package com.example.pokemons.domain.repository
 
-import com.example.pokemons.domain.LocalDb
-import com.example.pokemons.domain.PokemonApi
-import com.example.pokemons.domain.Repository
+import com.example.pokemons.data.db.LocalDb
+import com.example.pokemons.data.api.PokemonApi
 
 class RepositoryImpl(
     api: PokemonApi,
