@@ -15,7 +15,7 @@ class ViewModelFactory @Inject constructor(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when (modelClass) {
             FragmentMain::class.java -> FragmentMainVM(repository)
-            FragmentDetails::class.java -> FragmentDetailsVM()
+            FragmentDetails::class.java -> FragmentDetailsVM(repository)
             else -> IllegalStateException("unknown class")
         } as T
     }

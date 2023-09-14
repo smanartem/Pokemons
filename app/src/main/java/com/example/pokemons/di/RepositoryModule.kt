@@ -1,9 +1,10 @@
 package com.example.pokemons.di
 
-import com.example.pokemons.domain.repository.RepositoryImpl
-import com.example.pokemons.data.db.LocalDb
-import com.example.pokemons.data.api.PokemonApi
+import android.content.Context
+import com.example.pokemons.data.api.PokemonApiImpl
+import com.example.pokemons.data.db.LocalDbImpl
 import com.example.pokemons.domain.repository.Repository
+import com.example.pokemons.domain.repository.RepositoryImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -12,7 +13,7 @@ import javax.inject.Singleton
 class RepositoryModule {
     @Provides
     @Singleton
-    fun provideRepository(api: PokemonApi, local: LocalDb): Repository {
-        return RepositoryImpl(api, local)
+    fun provideRepository(api: PokemonApiImpl, local: LocalDbImpl, context: Context): Repository {
+        return RepositoryImpl(api, local, context)
     }
 }
