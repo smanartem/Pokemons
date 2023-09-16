@@ -37,10 +37,6 @@ class FragmentMain : Fragment() {
 
     private val viewModel by activityViewModels<FragmentMainVM> { viewModelFactory}
 
-    init {
-        println("Fragment Main was created")
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
