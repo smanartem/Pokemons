@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.pokemons.utils.TABLE_NAME
+import com.example.pokemons.data.models.Pokemon
+import com.example.pokemons.utils.DB_NAME
 
-@Database(entities = [PokemonEntity::class], version = 1, exportSchema = false)
+@Database(entities = [Pokemon::class], version = 1, exportSchema = false)
 abstract class PokemonsDatabase : RoomDatabase() {
     abstract fun getPokemonDao(): PokemonDao
 
@@ -22,7 +23,7 @@ abstract class PokemonsDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context,
                         PokemonsDatabase::class.java,
-                        TABLE_NAME
+                        DB_NAME
                     ).fallbackToDestructiveMigration()
                         .build()
 

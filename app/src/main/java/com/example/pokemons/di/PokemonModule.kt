@@ -9,6 +9,7 @@ import javax.inject.Singleton
 
 @Module
 class PokemonModule(private val context: Context) {
+
     @Provides
     @Singleton
     fun provideContext() = context

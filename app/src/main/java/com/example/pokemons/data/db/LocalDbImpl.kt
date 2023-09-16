@@ -1,8 +1,9 @@
 package com.example.pokemons.data.db
 
 import com.example.pokemons.data.models.Pokemon
+import javax.inject.Inject
 
-class LocalDbImpl(private val dao: PokemonDao): LocalDb {
+class LocalDbImpl @Inject constructor(private val dao: PokemonDao): LocalDb {
     override fun saveToDb(list: List<Pokemon>) {
         dao.addListToDB(list)
     }

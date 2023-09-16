@@ -6,8 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.example.pokemons.data.models.Pokemon
 import com.example.pokemons.domain.repository.Repository
 import com.example.pokemons.utils.START_PAGE
+import javax.inject.Inject
 
-class FragmentMainVM(private val repository: Repository) : ViewModel() {
+class FragmentMainVM @Inject constructor(val repository: Repository) : ViewModel() {
 
     var data: List<Pokemon> = repository.getPokemonsPage(START_PAGE)
 

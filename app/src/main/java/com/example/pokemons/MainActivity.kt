@@ -11,12 +11,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val navController: NavController by lazy { createNavHost().navController }
     lateinit var component: ApplicationComponent
+
+    init {
+        println("Activity was created")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         component = (applicationContext as App).appComponent
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
     }
 
     private fun createNavHost(): NavHostFragment {

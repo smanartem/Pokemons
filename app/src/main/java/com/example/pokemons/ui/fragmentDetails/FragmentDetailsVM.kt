@@ -9,17 +9,17 @@ import com.example.pokemons.domain.repository.Repository
 
 class FragmentDetailsVM(private val repository: Repository): ViewModel() {
 
-    var pokemon: PokemonDetails
+    //var pokemon: PokemonDetails
 
     private val mutablePokemon = MutableLiveData<PokemonDetails>()
     val livePokemon: LiveData<PokemonDetails> = mutablePokemon
 
     init {
-        pokemon = repository.getPokemon()
-        refreshPokemon()
+//        pokemon = repository.getPokemon()
+//        refreshPokemon()
     }
 
-    fun refreshPokemon(){
-        mutablePokemon.postValue(pokemon)
-    }
+//    fun refreshPokemon(){
+//        mutablePokemon.postValue(pokemon)
+//    }
 }
