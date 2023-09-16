@@ -15,6 +15,7 @@ import com.example.pokemons.R
 import com.example.pokemons.databinding.FragmentMainBinding
 import com.example.pokemons.di.ViewModelFactory
 import com.example.pokemons.ui.fragmentNoData.FragmentDialogNoData
+import com.example.pokemons.utils.KEY_ARGUMENT
 import com.example.pokemons.utils.START_PAGE
 import javax.inject.Inject
 
@@ -31,7 +32,7 @@ class FragmentMain : Fragment() {
     private val adapter = PokemonsListAdapter {
         findNavController().navigate(
             R.id.action_fragmentMain_to_fragmentDetails,
-            bundleOf(it to String)
+            bundleOf(KEY_ARGUMENT to String)
         )
     }
 

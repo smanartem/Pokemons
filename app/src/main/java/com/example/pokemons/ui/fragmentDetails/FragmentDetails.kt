@@ -10,6 +10,7 @@ import com.example.pokemons.MainActivity
 import com.example.pokemons.data.models.PokemonDetails
 import com.example.pokemons.databinding.FragmentDetailsBinding
 import com.example.pokemons.di.ViewModelFactory
+import com.example.pokemons.utils.KEY_ARGUMENT
 import javax.inject.Inject
 
 class FragmentDetails : Fragment() {
@@ -33,6 +34,8 @@ class FragmentDetails : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val pokemonNumber = arguments?.getInt(KEY_ARGUMENT)
+        viewModel.downloadPokemon(pokemonNumber!!)
 
         viewModel.livePokemon.observe(viewLifecycleOwner) {
             refreshUI(it)
