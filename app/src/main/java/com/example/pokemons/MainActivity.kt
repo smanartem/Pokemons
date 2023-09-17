@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.example.pokemons.databinding.ActivityMainBinding
 import com.example.pokemons.di.ApplicationComponent
 
@@ -18,7 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        setSupportActionBar(binding.toolbar)
+        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
     private fun createNavHost(): NavHostFragment {
