@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/pagination"
         android:layout_width="0dp"
-        android:layout_height="64dp"
+        android:layout_height="@dimen/FragmentMain_height_views"
         android:gravity="center"
         android:text="pagination"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,16 +17,16 @@
 
     <ImageButton
         android:id="@+id/previousBtn"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/FragmentMain_height_views"
+        android:layout_height="@dimen/FragmentMain_height_views"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="?android:attr/homeAsUpIndicator" />
 
     <ImageButton
         android:id="@+id/nextBtn"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/FragmentMain_height_views"
+        android:layout_height="@dimen/FragmentMain_height_views"
         android:rotationY="180"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

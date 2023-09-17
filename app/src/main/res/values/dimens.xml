@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_height">48dp</dimen>
+    <dimen name="FragmentMain_height_views">64dp</dimen>
+    <dimen name="FragmentDetails_height_views">64dp</dimen>
+    <dimen name="FragmentDetails_picture_size">128dp</dimen>
+</resources>
