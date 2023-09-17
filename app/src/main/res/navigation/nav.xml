@@ -15,7 +15,7 @@
     <fragment
         android:id="@+id/fragmentDetails"
         android:name="com.example.pokemons.ui.fragmentDetails.FragmentDetails"
-        android:label="FragmentDetails" >
+        android:label="{name}" >
         <argument
             android:name="path"
             app:argType="string" />

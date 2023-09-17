@@ -30,10 +30,10 @@ class FragmentMain : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-    private val adapter = PokemonsListAdapter {
+    private val adapter = PokemonsListAdapter {path, name ->
         findNavController().navigate(
             R.id.action_fragmentMain_to_fragmentDetails,
-            bundleOf(KEY_ARGUMENT to it)
+            bundleOf(KEY_ARGUMENT to path, "name" to name)
         )
     }
 

@@ -10,14 +10,14 @@ import com.example.pokemons.R
 import com.example.pokemons.data.models.Pokemon
 import com.example.pokemons.utils.PokemonDiffUtil
 
-class PokemonsListAdapter(private val onClickListener: (String) -> Unit) :
+class PokemonsListAdapter(private val onClickListener: (path: String, name: String) -> Unit) :
     ListAdapter<Pokemon, PokemonsListAdapter.PokemonsViewHolder>(PokemonDiffUtil()) {
 
     inner class PokemonsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         init {
             itemView.setOnClickListener {
-                onClickListener(getItem(bindingAdapterPosition).url)
+                onClickListener(getItem(bindingAdapterPosition).url, getItem(bindingAdapterPosition).name)
             }
         }
 
