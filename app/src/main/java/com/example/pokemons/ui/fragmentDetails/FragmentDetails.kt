@@ -60,10 +60,12 @@ class FragmentDetails : Fragment() {
             weight.text = buildString {
                 append("Wieght:   ")
                 append(pokemon.weight)
+                append("   KG")
             }
             height.text = buildString {
                 append("Height:   ")
                 append(pokemon.height)
+                append("   cm")
             }
         }
     }

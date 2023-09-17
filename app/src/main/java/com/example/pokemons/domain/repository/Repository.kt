@@ -26,8 +26,6 @@ class Repository @Inject constructor(
         refreshDb()
     }
 
-    //TODO: if database is empty
-
     private val _pokemonList = MutableLiveData<List<Pokemon>>()
     val pokemonList: LiveData<List<Pokemon>>
         get() = _pokemonList
