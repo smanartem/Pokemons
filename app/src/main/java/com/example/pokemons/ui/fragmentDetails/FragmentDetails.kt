@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.pokemons.MainActivity
 import com.example.pokemons.data.models.PokemonDetails
 import com.example.pokemons.databinding.FragmentDetailsBinding
@@ -22,7 +23,7 @@ class FragmentDetails : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-   // private val viewModel by activityViewModels<FragmentDetailsVM> { viewModelFactory }
+    // private val viewModel by activityViewModels<FragmentDetailsVM> { viewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,9 +50,22 @@ class FragmentDetails : Fragment() {
 
     private fun refreshUI(pokemon: PokemonDetails) {
         with(binding) {
-            type.text = pokemon.types[0].type.toString()
-            weight.text = pokemon.weight.toString()
-            height.text = pokemon.height.toString()
+            Glide.with(requireContext())
+                .load(pokemon.sprites.other.home.front_default)
+                .into(avatar)
+
+            type.text = buildString {
+                append("Type:   ")
+                append(pokemon.types[0].type.name)
+            }
+            weight.text = buildString {
+                append("Wieght:   ")
+                append(pokemon.weight)
+            }
+            height.text = buildString {
+                append("Height:   ")
+                append(pokemon.height)
+            }
         }
     }
 

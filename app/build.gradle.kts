@@ -83,4 +83,7 @@ dependencies {
     kapt("androidx.room:room-compiler:2.5.2")
     implementation ("androidx.room:room-rxjava2:2.5.2")
 
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
 }

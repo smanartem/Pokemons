@@ -4,4 +4,5 @@
     <dimen name="FragmentMain_height_views">64dp</dimen>
     <dimen name="FragmentDetails_height_views">64dp</dimen>
     <dimen name="FragmentDetails_picture_size">128dp</dimen>
+    <dimen name="FragmentDetails_text_size">32sp</dimen>
 </resources>
