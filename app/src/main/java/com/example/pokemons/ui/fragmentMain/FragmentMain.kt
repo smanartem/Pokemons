@@ -14,7 +14,6 @@ import com.example.pokemons.R
 import com.example.pokemons.data.models.Pokemon
 import com.example.pokemons.databinding.FragmentMainBinding
 import com.example.pokemons.di.ViewModelFactory
-import com.example.pokemons.ui.fragmentNoData.FragmentDialogNoData
 import com.example.pokemons.utils.KEY_ARGUMENT
 import com.example.pokemons.utils.LIMIT_ON_PAGE
 import com.example.pokemons.utils.START_PAGE
@@ -25,12 +24,10 @@ class FragmentMain : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private var noDataFragment: FragmentDialogNoData? = null
-
     private var _binding: FragmentMainBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-    private val adapter = PokemonsListAdapter {path, name ->
+    private val adapter = PokemonsListAdapter { path, name ->
         findNavController().navigate(
             R.id.action_fragmentMain_to_fragmentDetails,
             bundleOf(KEY_ARGUMENT to path, "name" to name)
@@ -61,7 +58,6 @@ class FragmentMain : Fragment() {
             val filteredList = filterItStartPage(currentPage, wholeList)
             adapter.submitList(filteredList)
         }
-
         refreshUI()
         setOnClickListeners()
     }
@@ -109,10 +105,5 @@ class FragmentMain : Fragment() {
         val from = START_PAGE + (LIMIT_ON_PAGE * (page - 1))
         val to = LIMIT_ON_PAGE * page
         return list.subList(from, to)
-    }
-
-    fun showFragmentNoData() {
-        noDataFragment = FragmentDialogNoData()
-        noDataFragment?.show(parentFragmentManager, null)
     }
 }

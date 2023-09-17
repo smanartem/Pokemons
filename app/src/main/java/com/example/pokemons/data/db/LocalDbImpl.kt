@@ -17,4 +17,5 @@ class LocalDbImpl @Inject constructor(private val dao: PokemonDao): LocalDb {
     override fun clearDb() {
         dao.clearDB()
     }
+
 }

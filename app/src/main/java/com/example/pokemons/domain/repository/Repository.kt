@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.pokemons.data.api.ApiInterfaceImpl
-import com.example.pokemons.data.db.PokemonsDatabase
+import com.example.pokemons.data.db.LocalDbImpl
 import com.example.pokemons.data.models.Pokemon
 import com.example.pokemons.data.models.PokemonDetails
 import com.example.pokemons.data.models.PokemonResponse
@@ -18,13 +18,15 @@ import javax.inject.Inject
 
 class Repository @Inject constructor(
     private val api: ApiInterfaceImpl,
-    private val db: PokemonsDatabase,
+    private val db: LocalDbImpl,
     private val context: Context
 ) {
 
     init {
         refreshDb()
     }
+
+    val mustShowNoData = MutableLiveData<Boolean>()
 
     private val _pokemonList = MutableLiveData<List<Pokemon>>()
     val pokemonList: LiveData<List<Pokemon>>
@@ -43,7 +45,7 @@ class Repository @Inject constructor(
                     override fun onSubscribe(d: Disposable) = Unit
 
                     override fun onNext(t: PokemonResponse) {
-                        db.getPokemonDao().addListToDB(t.results)
+                        db.saveToDb(t.results)
                     }
 
                     override fun onError(e: Throwable) {
@@ -58,16 +60,20 @@ class Repository @Inject constructor(
     }
 
     private fun getDataFromLocal() {
-        db.getPokemonDao().getPokemonsList()
+        db.getFromDb()
             .observeOn(Schedulers.io())
             .subscribe(object : Observer<List<Pokemon>> {
                 override fun onSubscribe(d: Disposable) = Unit
 
                 override fun onNext(t: List<Pokemon>) {
                     _pokemonList.postValue(t)
+                    mustShowNoData.postValue(false)
                 }
 
-                override fun onError(e: Throwable) = Unit
+                override fun onError(e: Throwable) {
+                    _pokemonList.postValue(emptyList())
+                    mustShowNoData.postValue(true)
+                }
 
                 override fun onComplete() = Unit
             })
@@ -81,9 +87,12 @@ class Repository @Inject constructor(
             .subscribe(object : Observer<PokemonDetails> {
                 override fun onSubscribe(d: Disposable) = Unit
 
-                override fun onNext(t: PokemonDetails) = _pokemon.postValue(t)
+                override fun onNext(t: PokemonDetails) {
+                    _pokemon.postValue(t)
+                    mustShowNoData.postValue(false)
+                }
 
-                override fun onError(e: Throwable) = println(ERROR_NOT_DOWNLOADED)
+                override fun onError(e: Throwable) = mustShowNoData.postValue(true)
 
                 override fun onComplete() = Unit
             })
