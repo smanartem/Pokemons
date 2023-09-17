@@ -58,8 +58,8 @@ class Repository @Inject constructor(
         }
     }
 
-    private fun downloadPokemonDetails(number: Int) {
-        api.getPokemon(number)
+    private fun downloadPokemonDetails(path: String) {
+        api.getPokemon(path)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : Observer<PokemonDetails> {
@@ -73,8 +73,7 @@ class Repository @Inject constructor(
             })
     }
 
-    fun getPokemon(number: Int): PokemonDetails {
-        downloadPokemonDetails(number)
-        return pokemon.value!!
+    fun loadPokemon(path: String) {
+        downloadPokemonDetails(path)
     }
 }

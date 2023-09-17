@@ -10,10 +10,10 @@ interface PokemonsApi {
     @GET("https://pokeapi.co/api/v2/pokemon/?limit=100&offset=0")
     fun getPokemonResponse(): Observable<PokemonResponse>
 
-    @GET("https://pokeapi.co/api/v2/pokemon/{number}/")
+    @GET("{path}")
     fun getPokemon(
         @Path(
-            value = "number",
+            value = "path",
             encoded = true
         ) number: String
     ): Observable<PokemonDetails>

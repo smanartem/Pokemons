@@ -13,7 +13,7 @@ class ApiInterfaceImpl @Inject constructor(
         return api.getPokemonResponse()
     }
 
-    fun getPokemon(number: Int): Observable<PokemonDetails> {
-       return api.getPokemon(number.toString())
+    fun getPokemon(path: String): Observable<PokemonDetails> {
+       return api.getPokemon(path)
     }
 }

@@ -34,7 +34,7 @@ class FragmentMain : Fragment() {
     private val adapter = PokemonsListAdapter {
         findNavController().navigate(
             R.id.action_fragmentMain_to_fragmentDetails,
-            bundleOf(KEY_ARGUMENT to String)
+            bundleOf(KEY_ARGUMENT to it)
         )
     }
 
