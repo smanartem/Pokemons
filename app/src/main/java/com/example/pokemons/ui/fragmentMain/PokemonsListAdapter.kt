@@ -10,17 +10,14 @@ import com.example.pokemons.R
 import com.example.pokemons.data.models.Pokemon
 import com.example.pokemons.utils.PokemonDiffUtil
 
-class PokemonsListAdapter(
-    private val onClickListener: (String) -> Unit) :
+class PokemonsListAdapter(private val onClickListener: (String) -> Unit) :
     ListAdapter<Pokemon, PokemonsListAdapter.PokemonsViewHolder>(PokemonDiffUtil()) {
-
-    lateinit var pokemonsList: List<Pokemon>
 
     inner class PokemonsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         init {
             itemView.setOnClickListener {
-                onClickListener(pokemonsList[bindingAdapterPosition].url)
+                onClickListener(getItem(bindingAdapterPosition).url)
             }
         }
 
@@ -28,7 +25,6 @@ class PokemonsListAdapter(
             //TODO: why binding dont work here?
             val view = itemView.findViewById<TextView>(R.id.pokemonName)
             view.text = pokemon.name
-            //itemView.pokemonName.text = pokemon.name
         }
     }
 
@@ -39,6 +35,6 @@ class PokemonsListAdapter(
     }
 
     override fun onBindViewHolder(holder: PokemonsViewHolder, position: Int) {
-        holder.bindTo(pokemonsList[position])
+        holder.bindTo(getItem(position))
     }
 }

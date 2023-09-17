@@ -9,7 +9,6 @@ import javax.inject.Inject
 
 class FragmentDetailsVM @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    //var pokemon: PokemonDetails
 
     private val mutablePokemon = MutableLiveData<PokemonDetails>()
     val livePokemon: LiveData<PokemonDetails> = mutablePokemon

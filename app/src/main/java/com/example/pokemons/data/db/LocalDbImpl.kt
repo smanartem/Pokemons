@@ -5,6 +5,9 @@ import javax.inject.Inject
 
 class LocalDbImpl @Inject constructor(private val dao: PokemonDao): LocalDb {
     override fun saveToDb(list: List<Pokemon>) {
+        println("SAVE to DB was called**********")
+        println("*** list size is ${list.size} in LocalDBImpl")
+
         dao.addListToDB(list)
     }
 
