@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +22,6 @@ import com.example.pokemons.utils.START_PAGE
 import javax.inject.Inject
 
 class FragmentMain : Fragment() {
-    private lateinit var viewModel: FragmentMainVM
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -38,7 +38,7 @@ class FragmentMain : Fragment() {
         )
     }
 
-    //  private val viewModel by activityViewModels<FragmentMainVM> { viewModelFactory}
+      private val viewModel by activityViewModels<FragmentMainVM> { viewModelFactory}
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,8 +46,6 @@ class FragmentMain : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         (requireActivity() as MainActivity).component.inject(this)
-
-        viewModel = ViewModelProvider(this, viewModelFactory)[FragmentMainVM::class.java]
 
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
