@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface PokemonsApi {
-    @GET("https://pokeapi.co/api/v2/pokemon/?limit=100&offset=0")
+    @GET("https://pokeapi.co/api/v2/pokemon/?limit=1281&offset=0")
     fun getPokemonResponse(): Observable<PokemonResponse>
 
     @GET("{path}")

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokemons.MainActivity
@@ -38,7 +37,10 @@ class FragmentMain : Fragment() {
         )
     }
 
-      private val viewModel by activityViewModels<FragmentMainVM> { viewModelFactory}
+    private val viewModel by activityViewModels<FragmentMainVM> { viewModelFactory }
+
+    private var currentPage = START_PAGE
+    private var wholeList: List<Pokemon> = listOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,13 +57,29 @@ class FragmentMain : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.pokemonListLive.observe(viewLifecycleOwner) {
-            println("*** FragmentMain -> ${it.size} items to submit")
-            val filteredList = filterIt(START_PAGE, it)
-            println("*** FragmentMain -> filtered list = ${filteredList.size}")
+            wholeList = it
+            val filteredList = filterItStartPage(currentPage, wholeList)
             adapter.submitList(filteredList)
         }
 
         refreshUI()
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
+        binding.nextBtn.setOnClickListener {
+            currentPage++
+            adapter.submitList(filterItAfterClick(currentPage, wholeList))
+            binding.pagination.text = currentPage.toString()
+        }
+
+        binding.previousBtn.setOnClickListener {
+            if (currentPage != START_PAGE) {
+                currentPage--
+                adapter.submitList(filterItAfterClick(currentPage, wholeList))
+                binding.pagination.text = currentPage.toString()
+            }
+        }
     }
 
     private fun refreshUI() {
@@ -70,7 +88,7 @@ class FragmentMain : Fragment() {
             pokemonsListRV.adapter = adapter
             pokemonsListRV.setHasFixedSize(true)
 
-            pagination.text = START_PAGE.toString()
+            pagination.text = currentPage.toString()
         }
     }
 
@@ -79,13 +97,18 @@ class FragmentMain : Fragment() {
         _binding = null
     }
 
-    private fun filterIt(page: Int, list: List<Pokemon>): List<Pokemon> {
-        if(list.isNotEmpty()){
+    private fun filterItStartPage(page: Int, list: List<Pokemon>): List<Pokemon> {
+        if (list.isNotEmpty()) {
             return list.subList(page, page + LIMIT_ON_PAGE)
-        }else{
+        } else {
             return emptyList()
         }
+    }
 
+    private fun filterItAfterClick(page: Int, list: List<Pokemon>): List<Pokemon> {
+        val from = START_PAGE + (LIMIT_ON_PAGE * (page - 1))
+        val to = LIMIT_ON_PAGE * page
+        return list.subList(from, to)
     }
 
     fun showFragmentNoData() {
