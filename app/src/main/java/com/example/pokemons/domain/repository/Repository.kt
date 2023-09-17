@@ -45,7 +45,7 @@ class Repository @Inject constructor(
                     override fun onSubscribe(d: Disposable) = Unit
 
                     override fun onNext(t: PokemonResponse) {
-                        _pokemonList.postValue(t.results)
+                        db.getPokemonDao().addListToDB(t.results)
                     }
 
                     override fun onError(e: Throwable) {
@@ -56,6 +56,24 @@ class Repository @Inject constructor(
                     override fun onComplete() = Unit
                 })
         }
+        getDataFromLocal()
+    }
+
+    private fun getDataFromLocal() {
+        db.getPokemonDao().getPokemonsList()
+            .observeOn(Schedulers.io())
+            .subscribe(object : Observer<List<Pokemon>> {
+                override fun onSubscribe(d: Disposable) = Unit
+
+                override fun onNext(t: List<Pokemon>) {
+                    _pokemonList.postValue(t)
+                }
+
+                override fun onError(e: Throwable) = Unit
+
+                override fun onComplete() = Unit
+            })
+
     }
 
     private fun downloadPokemonDetails(path: String) {
